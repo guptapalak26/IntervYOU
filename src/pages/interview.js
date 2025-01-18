@@ -43,26 +43,32 @@ const Interview = () => {
     setLoading(true);
 
     const formData = new FormData();
-    formData.append('file', videoFile);
+    formData.append('file', videoFile);  // Use the selected video file
     formData.append(
       'text',
       `Analyze the following job description and evaluate the interviewee's answer. Also, provide feedback on presentation skills like eye contact, pacing, and clarity. Job description: ${jobDescription}`
     );
+    formData.append('providers', 'google'); // Supported provider
 
     try {
-      // Make the API request to Gemini API for analysis
-      const response = await axios.post('https://api.gemini.com/v1/analyze-video', formData, {
+      const response = await axios.post('https://api.edenai.run/v2/video/question_answer', formData, {
         headers: {
-          Authorization: 'Bearer YOUR_API_KEY',
-          'Content-Type': 'multipart/form-data',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTQ2MzgxNTQtZWQzNy00OGFhLWEwNWUtNTc0Mjc2YmJhNTA5IiwidHlwZSI6ImFwaV90b2tlbiJ9.85KXbjVnosofEsZV7p2yKnBvqGdEZsgWl4j03ICZWAk', // Replace with a valid API key
         },
       });
 
-      // Display feedback or navigate to another page
-      setFeedback(response.data);
+      setFeedback(response.data.google.answer || 'No feedback available'); // Adjust based on API response
     } catch (error) {
       console.error('Error uploading video:', error);
-      setFeedback('An error occurred while analyzing the video.');
+
+      if (error.response) {
+        console.log('Response data:', error.response.data);
+        setFeedback(`API Error: ${error.response.data.message || 'Permission error. Check your API key and permissions.'}`);
+      } else if (error.request) {
+        setFeedback('No response from the server. Please check your network connection.');
+      } else {
+        setFeedback(`Error: ${error.message}`);
+      }
     } finally {
       setLoading(false);
     }
