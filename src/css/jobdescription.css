@@ -1,0 +1,41 @@
+#job-description-container {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  #job-description-heading {
+    color: #000;
+    margin-bottom: 10px;
+  }
+  
+  textarea {
+    color: #000;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    min-height: 150px;
+    font-size: 16px;
+  }
+  
+  textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }

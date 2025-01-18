@@ -58,6 +58,7 @@ const Interview = () => {
       });
 
       setFeedback(response.data.google.answer || 'No feedback available'); // Adjust based on API response
+      console.log(response.data.google.answer);
     } catch (error) {
       console.error('Error uploading video:', error);
 
