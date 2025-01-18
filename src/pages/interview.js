@@ -41,7 +41,7 @@ const Interview = () => {
     }
 
     setLoading(true);
-
+//tthis is for video
     const formData = new FormData();
     formData.append('file', videoFile);  // Use the selected video file
     formData.append(
