@@ -3,39 +3,24 @@ import { useNavigate } from 'react-router-dom';
 
 const JobDescription = () => {
   const [jobDescription, setJobDescription] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Use navigate for routing
 
   const handleStartInterview = () => {
-    if (!jobDescription.trim()) {
-      setError('Please enter the job description.');
-      return;
-    }
-
+    // Save job description to local storage
     localStorage.setItem('jobDescription', jobDescription);
+    // Navigate to the Interview page
     navigate('/interview');
-  };
-
-  const handleInputChange = (e) => {
-    setJobDescription(e.target.value);
-    if (e.target.value.trim()) {
-      setError('');
-    }
   };
 
   return (
     <div id="job-description-container">
-      <h1 id="job-description-heading" style={{ color: '#000' }}>Job Description</h1>
+      <h1 id="job-description-heading">Job Description</h1>
       <textarea
         value={jobDescription}
-        onChange={handleInputChange}
+        onChange={(e) => setJobDescription(e.target.value)}
         placeholder="Enter the job description here"
-        required
       />
-      {error && <p style={{ color: 'red'}}>{error}</p>}
-      <button onClick={handleStartInterview} disabled={!jobDescription.trim()}>
-        Start Interview
-      </button>
+      <button onClick={handleStartInterview}>Start Interview</button>
     </div>
   );
 };
