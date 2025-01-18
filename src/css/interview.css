@@ -1,0 +1,10 @@
+.interview_night_video>video{
+position: fixed;
+width: 100%;
+z-index: -1;
+object-fit: cover;
+height: 100%;}
+
+div{
+    color:white;
+}

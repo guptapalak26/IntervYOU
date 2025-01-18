@@ -1,16 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import JobDescription from './pages/jobDescription'; // Correct import
+import Interview from './pages/interview'; // Correct import
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is beginning of our UOFT hacks project
-        </p>
-        
-      </header>
+      <Router>
+        <Routes>
+          {/* Route for Job Description */}
+          <Route path="/" element={<JobDescription />} />
+          {/* Route for Interview */}
+          <Route path="/interview" element={<Interview />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
