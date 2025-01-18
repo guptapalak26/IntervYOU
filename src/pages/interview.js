@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import night_city from '../videos/city.mp4';
 import '../css/interview.css';
@@ -8,7 +7,6 @@ const Interview = () => {
   const [videoFile, setVideoFile] = useState(null);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   // Handle file change (upload video)
   const handleFileChange = (e) => {
@@ -16,7 +14,7 @@ const Interview = () => {
 
     if (!file) {
       alert('No file selected.');
-      return;
+      return
     }
 
     if (!file.type.startsWith('video/')) {
@@ -25,11 +23,12 @@ const Interview = () => {
     }
 
     setVideoFile(file);
+    handleSubmit(file); // Automatically submit when a file is selected
   };
 
   // Submit video for analysis
-  const handleSubmit = async () => {
-    if (!videoFile) {
+  const handleSubmit = async (file) => {
+    if (!file && !videoFile) {
       alert('Please upload a video before submitting.');
       return;
     }
@@ -43,7 +42,7 @@ const Interview = () => {
     setLoading(true);
 
     const formData = new FormData();
-    formData.append('file', videoFile);
+    formData.append('file', file || videoFile);
     formData.append(
       'text',
       `Analyze the following job description and evaluate the interviewee's answer. Also, provide feedback on presentation skills like eye contact, pacing, and clarity. Job description: ${jobDescription}`
@@ -78,12 +77,33 @@ const Interview = () => {
       <h1 className="header">Interview Analysis</h1>
       <p>Upload your interview video below. The feedback will analyze your answer and presentation skills.</p>
 
-      {/* Video upload form */}
-      <input type="file" accept="video/*" onChange={handleFileChange} disabled={loading} />
-
-      <button onClick={handleSubmit} disabled={loading}>
-        {loading ? 'Analyzing...' : 'Submit Video'}
-      </button>
+      {/* Custom file input */}
+      <div style={{ position: 'relative', display: 'inline-block' }}>
+        <label
+          htmlFor="video-upload"
+          style={{
+            display: 'inline-block',
+            backgroundColor: '#007BFF',
+            color: '#fff',
+            padding: '10px 20px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            textAlign: 'center',
+          }}
+        >
+          {loading ? 'Analyzing...' : 'Submit Video'}
+        </label>
+        <input
+          id="video-upload"
+          type="file"
+          accept="video/*"
+          onChange={handleFileChange}
+          disabled={loading}
+          style={{
+            display: 'none', // Hide the default input
+          }}
+        />
+      </div>
 
       {/* Display feedback */}
       {feedback && (
@@ -97,3 +117,4 @@ const Interview = () => {
 };
 
 export default Interview;
+
