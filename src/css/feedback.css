@@ -3,7 +3,7 @@
     margin: 20px auto;
     padding: 20px;
     max-width: 600px;
-    background-color: #ffffff;
+    background-color: #95a7b0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@
     text-align: center;
     font-size: 2em;
     margin-bottom: 20px;
-    color: #007BFF;
+    color: #dcdeaf;
   }
   
   .feedback-section {

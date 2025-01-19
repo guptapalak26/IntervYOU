@@ -71,7 +71,7 @@ const JobDescription = () => {
       </button>
       {generatedQuestions.length > 0 && (
   <div>
-    <h2>Your questions have been generated.</h2>
+    <h2 className='generated'>Your questions have been generated.</h2>
   </div>
 )}
       <button onClick={handleStartInterview} disabled={loading || generatedQuestions.length === 0}>
