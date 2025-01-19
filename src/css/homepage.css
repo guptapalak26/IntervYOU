@@ -61,12 +61,12 @@
   }
   
   .home-button:hover {
-    background-color: #c8e3e0;
-    transform: translateY(-2px);
+    background-color: #3b4a52;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
   }
   
   .home-button:active {
-    background-color: #003f7f;
+    background-color: white;
     transform: translateY(1px);
   }
