@@ -6,7 +6,6 @@ import '../css/interview.css';
 
 const Interview = () => {
   const [videoFile, setVideoFile] = useState(null);
-  const [resumeFile, setResumeFile] = useState(null);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
@@ -104,12 +103,6 @@ const Interview = () => {
     setVideoFile(file);
   };
 
-  const handleResumeChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setResumeFile(file);
-    }
-  };
 
   const handleSubmit = async () => {
     if (!videoFile) {
@@ -135,12 +128,12 @@ const Interview = () => {
 "- **Sentence Structure**: Evaluate the grammatical correctness and coherence of the answer." + 
 "- **Relation to Job Description**: Assess how well the answer aligns with the job description and its requirements." + 
 "- **Professionalism**: Rate the level of professionalism in the interviewee’s language and demeanor." + 
-" Provide a score out of 10 for each subcategory, along with qualitative feedback to help improve performance.";
+" Provide a score out of 10 for each subcategory, along with qualitative feedback to help improve performance. At the end," +
+" provide an overall score for the interviewee's performance based on the categories above.";
 
 
     const formData = new FormData();
     formData.append('file', videoFile);
-    if (resumeFile) formData.append('resume', resumeFile);
     formData.append(
       'text',
       promptText + `Job description: ${jobDescription}`
@@ -176,6 +169,7 @@ const Interview = () => {
   };
 
   const goToFeedback = () => {
+    localStorage.setItem('feedback', feedback);
     navigate('../feedback');
   };
 
@@ -204,9 +198,7 @@ const Interview = () => {
           )}
 
           <input type="file" accept="video/*" onChange={handleFileChange} disabled={loading} />
-          <p className="optional-text">Optional: Upload your resume</p>
-          <input type="file" accept=".pdf,.doc,.docx" onChange={handleResumeChange} disabled={loading} />
-
+        
           <button onClick={handleSubmit} disabled={!videoFile || loading}>
             {loading ? 'Analyzing...' : 'Submit Video'}
           </button>
