@@ -70,15 +70,10 @@ const JobDescription = () => {
         {loading ? 'Generating Questions...' : 'Generate Questions'}
       </button>
       {generatedQuestions.length > 0 && (
-        <div>
-          <h2>Generated Questions:</h2>
-          <ul>
-            {generatedQuestions.map((question, index) => (
-              <li key={index}>{question}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+  <div>
+    <h2>Your questions have been generated.</h2>
+  </div>
+)}
       <button onClick={handleStartInterview} disabled={loading || generatedQuestions.length === 0}>
         Start Interview
       </button>
