@@ -1,5 +1,3 @@
-/* job-description.css */
-
 /* General container styling */
 .job-description-container {
   display: flex;
@@ -7,90 +5,73 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9; /* Light background */
-  color: #333;
+  padding: 60px 40px 40px; /* Added more padding at the top */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* More professional font */
+  background-color: #c5baba; /* Soft, neutral light gray background */
+  color: #333; /* Darker text for readability */
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Heading styling */
 .job-description-heading {
-  font-size: 3rem; /* Larger font size */
-  margin-bottom: 30px;
-  color: #007bff; /* Blue color */
+  font-size: 2.5rem; /* Slightly reduced size for balance */
+  margin-bottom: 40px; /* Increased bottom margin for more spacing */
+  color: #4a5d68; /* Subtle blue-gray */
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Textarea styling */
 textarea {
-  width: 80%;
-  max-width: 800px; /* Increased width */
-  height: 200px; /* Larger height */
+  width: 90%;
+  max-width: 750px;
+  height: 180px;
   padding: 15px;
-  font-size: 1.2rem; /* Larger text size */
-  border: 2px solid #ccc;
-  border-radius: 10px; /* Rounded corners */
+  font-size: 1rem; /* Reduced for readability */
+  border: 1px solid #ccc;
+  border-radius: 8px;
   resize: none;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  background-color: #fff; /* White background */
+  margin-bottom: 30px; /* Increased bottom margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fafeff;
   color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 textarea:focus {
   outline: none;
-  border-color: #007bff; /* Blue border on focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Highlighted shadow */
+  border-color: #4a5d68;
+  box-shadow: 0 0 8px rgba(74, 93, 104, 0.3);
 }
 
 /* Button styling */
 button {
-  background-color: #007bff;
+  background-color: #51646e;
   color: white;
   border: none;
-  padding: 15px 30px; /* Larger padding */
-  font-size: 1.2rem; /* Larger font size */
+  padding: 12px 25px;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 20px;
-  border-radius: 10px; /* Rounded corners */
-  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-top: 30px; /* Increased top margin */
+  border-radius: 6px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #0056b3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hover shadow */
+  background-color: #3b4a52;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: white;
+  transform: translateY(1px);
 }
 
 button:disabled {
   background-color: #999;
   cursor: not-allowed;
-  box-shadow: none;
-}
-
-/* Optional feedback container styling */
-.feedback-container {
-  margin-top: 40px;
-  padding: 20px;
-  border: 2px solid #ccc;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 800px;
-}
-
-.feedback-container h2 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  color: #007bff; /* Blue color */
-}
-
-.feedback-container pre {
-  text-align: left;
-  font-family: monospace;
-  background-color: #333;
-  color: #0f0;
-  padding: 15px;
-  border-radius: 10px;
-  overflow-x: auto;
+  opacity: 0.6;
 }

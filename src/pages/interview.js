@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import night_city from '../videos/city.mp4';
 import Webcam from "react-webcam";
 import '../css/interview.css';
 
@@ -182,10 +181,6 @@ const Interview = () => {
 
   return (
     <div className="interview-container">
-      <div className="interview_night_video">
-        <video src={night_city} autoPlay loop muted></video>
-      </div>
-
       <h1 className="header">Interview Analysis</h1>
       {questions.length > 0 ? (
         <>
