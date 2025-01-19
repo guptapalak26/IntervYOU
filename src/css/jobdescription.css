@@ -1,41 +1,81 @@
+/* General container styling */
 #job-description-container {
-    margin: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  #job-description-heading {
-    color: #000;
-    margin-bottom: 10px;
-  }
-  
-  textarea {
-    color: #000;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    width: 100%;
-    min-height: 150px;
-    font-size: 16px;
-  }
-  
-  textarea:focus {
-    outline: none;
-    border-color: #007BFF;
-  }
-  
-  button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, opacity 0.3s;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px 40px; /* Added more padding at the top */
+  font-family: 'Helvetica Neue'; /* More professional font */
+  background-color: #efe9d7; /* Soft, neutral light gray background */
+  color: #333; /* Darker text for readability */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Heading styling */
+#job-description-heading {
+  font-size: 2.5rem; /* Slightly reduced size for balance */
+  margin-bottom: 40px; /* Increased bottom margin for more spacing */
+  color: #4a5d68; /* Subtle blue-gray */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.generated{
+  font-family: 'Times New Roman';
+}
+
+/* Textarea styling */
+textarea {
+  width: 90%;
+  max-width: 750px;
+  height: 180px;
+  padding: 15px;
+  font-size: 1rem; /* Reduced for readability */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  margin-bottom: 30px; /* Increased bottom margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fafeff;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #4a5d68;
+  box-shadow: 0 0 8px rgba(74, 93, 104, 0.3);
+}
+
+/* Button styling */
+button {
+  background-color: #51646e;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 30px; /* Increased top margin */
+  border-radius: 6px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #3b4a52;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: white;
+  transform: translateY(1px);
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
