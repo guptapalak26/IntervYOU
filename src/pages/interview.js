@@ -126,12 +126,25 @@ const Interview = () => {
 
     setLoading(true);
 
+    const promptText = "Analyze the following job description and evaluate the interviewee's answer. Provide detailed feedback on the following categories with a score out of 10 for each subcategory:" + 
+" 1. **Presentation Skills**: " + 
+"- **Eye Contact**: Evaluate the interviewee's eye contact during the answer." + 
+"- **Pacing**: Assess the pacing of the response (whether it's too fast, too slow, or just right)." + 
+"- **Clarity**: Rate how clearly the interviewee expresses their ideas." + 
+"- **Tone**: Rate the tone used during the interview (whether it is appropriate, engaging, and professional)." + 
+" 2. **Answer Quality**: " + 
+"- **Sentence Structure**: Evaluate the grammatical correctness and coherence of the answer." + 
+"- **Relation to Job Description**: Assess how well the answer aligns with the job description and its requirements." + 
+"- **Professionalism**: Rate the level of professionalism in the interviewee’s language and demeanor." + 
+" Provide a score out of 10 for each subcategory, along with qualitative feedback to help improve performance.";
+
+
     const formData = new FormData();
     formData.append('file', videoFile);
     if (resumeFile) formData.append('resume', resumeFile);
     formData.append(
       'text',
-      `Analyze the following job description and evaluate the interviewee's answer. Also, provide feedback on presentation skills like eye contact, pacing, and clarity. Job description: ${jobDescription}`
+      promptText + `Job description: ${jobDescription}`
     );
     formData.append('providers', 'google');
 
