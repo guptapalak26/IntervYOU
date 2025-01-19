@@ -41,7 +41,8 @@ const Interview = () => {
     }
 
     setLoading(true);
-//tthis is for video
+
+    // Prepare the form data
     const formData = new FormData();
     formData.append('file', videoFile);  // Use the selected video file
     formData.append(
@@ -57,7 +58,15 @@ const Interview = () => {
         },
       });
 
-      setFeedback(response.data.google.answer || 'No feedback available'); // Adjust based on API response
+      // Log the full response to see the structure
+      console.log(response.data);
+
+      // Adjust according to the response structure
+      if (response.data && response.data.google && response.data.google.answer) {
+        setFeedback(response.data.google.answer);
+      } else {
+        setFeedback('No feedback available.');
+      }
     } catch (error) {
       console.error('Error uploading video:', error);
 
@@ -95,7 +104,7 @@ const Interview = () => {
       {feedback && (
         <div>
           <h2>Feedback</h2>
-          <pre>{JSON.stringify(feedback, null, 2)}</pre>
+          <pre>{feedback}</pre>
         </div>
       )}
     </div>
