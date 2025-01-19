@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   const goToHome = () => {
-    navigate('./feedback');
+    navigate('./aboutus');
   };
 
   return (
@@ -20,7 +20,7 @@ const Home = () => {
       <video className="background-video" src={video} autoPlay loop muted></video>
 
       <div className="home-content">
-        <h1 className="home-heading">Welcome to Interview Analyzer</h1>
+        <h1 className="home-heading">Welcome to IntervYOU</h1>
         <p className="home-description">
           Your ultimate tool for analyzing and improving interview skills.
         </p>

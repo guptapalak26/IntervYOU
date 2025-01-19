@@ -4,6 +4,7 @@ import JobDescription from './pages/jobDescription';
 import Interview from './pages/interview';
 import FeedbackPage from './pages/feedback';
 import Home from './pages/homepage';
+import AboutUs from './pages/aboutus';  
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           <Route path="/interview" element={<Interview />} />
           {/* Route for Feedback */}
           <Route path="/feedback" element={<FeedbackPage />} />
+          {/* Route for About Us */}
+          <Route path="/aboutus" element={<AboutUs />} />
+
         </Routes>
       </Router>
     </div>
