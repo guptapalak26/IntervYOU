@@ -1,44 +1,47 @@
 /* job-description.css */
 
 /* General container styling */
-#job-description-container {
+.job-description-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Light background */
   color: #333;
   min-height: 100vh;
 }
 
 /* Heading styling */
-#job-description-heading {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #007bff;
+.job-description-heading {
+  font-size: 3rem; /* Larger font size */
+  margin-bottom: 30px;
+  color: #007bff; /* Blue color */
+  font-weight: bold;
 }
 
 /* Textarea styling */
 textarea {
   width: 80%;
-  max-width: 600px;
-  height: 150px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  max-width: 800px; /* Increased width */
+  height: 200px; /* Larger height */
+  padding: 15px;
+  font-size: 1.2rem; /* Larger text size */
+  border: 2px solid #ccc;
+  border-radius: 10px; /* Rounded corners */
   resize: none;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background-color: #fff; /* White background */
+  color: #333;
 }
 
 textarea:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Highlighted shadow */
 }
 
 /* Button styling */
@@ -46,20 +49,48 @@ button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 15px 30px; /* Larger padding */
+  font-size: 1.2rem; /* Larger font size */
   cursor: pointer;
-  border-radius: 5px;
+  margin-top: 20px;
+  border-radius: 10px; /* Rounded corners */
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
   background-color: #0056b3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hover shadow */
 }
 
 button:disabled {
   background-color: #999;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+/* Optional feedback container styling */
+.feedback-container {
+  margin-top: 40px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+}
+
+.feedback-container h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #007bff; /* Blue color */
+}
+
+.feedback-container pre {
+  text-align: left;
+  font-family: monospace;
+  background-color: #333;
+  color: #0f0;
+  padding: 15px;
+  border-radius: 10px;
+  overflow-x: auto;
 }

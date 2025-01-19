@@ -1,14 +1,59 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const JobDescription = () => {
   const [jobDescription, setJobDescription] = useState('');
-  const navigate = useNavigate(); // Use navigate for routing
+  const [generatedQuestions, setGeneratedQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const apiKey = "AIzaSyCnuVVdrvErO-BAvb-950qve15n6stIYcQ"
+
+  const getResponseForGivenPrompt = async () => {
+    if (!jobDescription) {
+      alert('Please enter a job description.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const result = await model.generateContent("Generate 5 interview questions based on the following job description " + jobDescription);
+        const text = result.response.text();
+
+
+        // Split the questions from the generated text
+         const extractedQuestions = text
+            .split('\n')
+            .filter((line) => line.trim().match(/^\d+\./))
+             .map((line) => line.replace(/^\d+\.\s*/, '').trim());
+
+        if(extractedQuestions.length === 5) {
+           setGeneratedQuestions(extractedQuestions);
+         }
+         else {
+             alert("Unexpected format for generated questions, check the returned value in the console")
+            console.log(text)
+         }
+    } catch (error) {
+        console.error("Error fetching Gemini response:", error);
+        alert("Error fetching Gemini response:" + error.message)
+    } finally{
+      setLoading(false);
+    }
+  };
+
 
   const handleStartInterview = () => {
-    // Save job description to local storage
+    if (generatedQuestions.length === 0) {
+      alert('Please generate questions first.');
+      return;
+    }
+
     localStorage.setItem('jobDescription', jobDescription);
-    // Navigate to the Interview page
+    localStorage.setItem('generatedQuestions', JSON.stringify(generatedQuestions));
     navigate('/interview');
   };
 
@@ -20,7 +65,20 @@ const JobDescription = () => {
         onChange={(e) => setJobDescription(e.target.value)}
         placeholder="Enter the job description here"
       />
-      <button onClick={handleStartInterview} disabled={!jobDescription.trim()}>
+      <button onClick={getResponseForGivenPrompt} disabled={loading}>
+        {loading ? 'Generating Questions...' : 'Generate Questions'}
+      </button>
+      {generatedQuestions.length > 0 && (
+        <div>
+          <h2>Generated Questions:</h2>
+          <ul>
+            {generatedQuestions.map((question, index) => (
+              <li key={index}>{question}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <button onClick={handleStartInterview} disabled={loading || generatedQuestions.length === 0}>
         Start Interview
       </button>
     </div>

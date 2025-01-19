@@ -100,3 +100,18 @@
     border-radius: 5px;
     overflow-x: auto;
   }
+
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.video-container video{
+   max-width: 70%;
+   max-height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
