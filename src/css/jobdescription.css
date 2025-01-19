@@ -1,5 +1,5 @@
 /* General container styling */
-.job-description-container {
+#job-description-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,14 +7,14 @@
   text-align: center;
   padding: 60px 40px 40px; /* Added more padding at the top */
   font-family: 'Helvetica Neue', Arial, sans-serif; /* More professional font */
-  background-color: #c5baba; /* Soft, neutral light gray background */
+  background-color: #efe9d7; /* Soft, neutral light gray background */
   color: #333; /* Darker text for readability */
   min-height: 100vh;
   box-sizing: border-box;
 }
 
 /* Heading styling */
-.job-description-heading {
+#job-description-heading {
   font-size: 2.5rem; /* Slightly reduced size for balance */
   margin-bottom: 40px; /* Increased bottom margin for more spacing */
   color: #4a5d68; /* Subtle blue-gray */
