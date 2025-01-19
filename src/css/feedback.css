@@ -39,6 +39,7 @@
   .feedback-section:last-child {
     margin-bottom: 0;
   }
+<<<<<<< HEAD
   .feedback-container {
     width: 80%;
     margin: 50px auto;
@@ -76,3 +77,5 @@
     margin-bottom: 12px;
   }
   
+=======
+>>>>>>> 876a91d4da2afc1a38b9ad790018c01989928d33
