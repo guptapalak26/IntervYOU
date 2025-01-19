@@ -6,11 +6,12 @@ import '../css/interview.css';
 
 const Interview = () => {
   const [videoFile, setVideoFile] = useState(null);
+  const [resumeFile, setResumeFile] = useState(null); // State for resume upload
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle file change (upload video)
+  // Handle video file change
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
@@ -27,7 +28,15 @@ const Interview = () => {
     setVideoFile(file);
   };
 
-  // Submit video for analysis
+  // Handle resume file change
+  const handleResumeChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setResumeFile(file);
+    }
+  };
+
+  // Submit video and optional resume for analysis
   const handleSubmit = async () => {
     if (!videoFile) {
       alert('Please upload a video before submitting.');
@@ -44,7 +53,8 @@ const Interview = () => {
 
     // Prepare the form data
     const formData = new FormData();
-    formData.append('file', videoFile);  // Use the selected video file
+    formData.append('file', videoFile);
+    if (resumeFile) formData.append('resume', resumeFile); // Add resume file if provided
     formData.append(
       'text',
       `Analyze the following job description and evaluate the interviewee's answer. Also, provide feedback on presentation skills like eye contact, pacing, and clarity. Job description: ${jobDescription}`
@@ -83,28 +93,38 @@ const Interview = () => {
     }
   };
 
+  const goToFeedback = () => {
+    navigate('./feedback');
+  };
+
   return (
-    <div>
+    <div className="interview-container">
       {/* Background video */}
-      <div className="interview_night_video">
+      <div className="interview-night-video">
         <video src={night_city} autoPlay loop muted></video>
       </div>
 
       <h1 className="header">Interview Analysis</h1>
       <p>Upload your interview video below. The feedback will analyze your answer and presentation skills.</p>
 
-      {/* Video upload form */}
       <input type="file" accept="video/*" onChange={handleFileChange} disabled={loading} />
+      <p className="optional-text">Optional: Upload your resume</p>
+      <input type="file" accept=".pdf,.doc,.docx" onChange={handleResumeChange} disabled={loading} />
 
-      <button onClick={handleSubmit} disabled={loading}>
+      <button onClick={handleSubmit} disabled={!videoFile || loading}>
         {loading ? 'Analyzing...' : 'Submit Video'}
       </button>
 
       {/* Display feedback */}
-      {feedback && (
-        <div>
+      {feedback ? (
+        <div className="feedback-container">
           <h2>Feedback</h2>
-          <pre>{feedback}</pre>
+          <pre>{"Your feedback result is now ready."}</pre>
+          <button onClick={goToFeedback}>Go to Feedback</button>
+        </div>
+      ) : (
+        <div className="feedback-container">
+          <p>No feedback available yet.</p>
         </div>
       )}
     </div>

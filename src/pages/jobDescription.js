@@ -20,7 +20,9 @@ const JobDescription = () => {
         onChange={(e) => setJobDescription(e.target.value)}
         placeholder="Enter the job description here"
       />
-      <button onClick={handleStartInterview}>Start Interview</button>
+      <button onClick={handleStartInterview} disabled={!jobDescription.trim()}>
+        Start Interview
+      </button>
     </div>
   );
 };
