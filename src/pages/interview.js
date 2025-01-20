@@ -148,7 +148,7 @@ const Interview = () => {
     try {
       const response = await axios.post('https://api.edenai.run/v2/video/question_answer', formData, {
         headers: {
-          Authorization: 'Bearer YOUR_API_KEY', // Use your valid API key
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzk0YjdiYzItMWQyZS00ZjI1LTgwYmYtZjgxMWI5MmY2MzVhIiwidHlwZSI6ImFwaV90b2tlbiJ9.IrFAm7H_9FziAhyj9ta8BZb9uwWH5QOxKDhVAsoFA_k', // Use your valid API key
         },
       });
 
@@ -235,7 +235,6 @@ const Interview = () => {
           ) : (
             <div className="feedback-container">
               <p>No feedback available yet.</p>
-              <button onClick={goToFeedback}>Go to Feedback</button>
             </div>
           )}
         </>
