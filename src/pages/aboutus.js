@@ -6,13 +6,13 @@ const AboutUs = () => {
     <div className="about-us-container">
       <div className="about-us-header">
         <h1>About Us</h1>
-        <p>Welcome to <span className="highlight">IntervYOU</span></p>
+        <p>Welcome to <span className="highlight">IntervYou</span></p>
       </div>
 
       <div className="about-us-section">
         <h2>Our Mission</h2>
         <p>
-          At <span className="highlight">IntervYOU</span>, our mission is to empower students to excel in their career journeys by building confidence, sharpening interview skills, and helping them stand out in a competitive job market.
+          At <span className="highlight">IntervYou</span>, our mission is to empower students to excel in their career journeys by building confidence, sharpening interview skills, and helping them stand out in a competitive job market.
         </p>
         <p>
           We understand that transitioning from education to employment can be challenging, especially when it comes to preparing for job interviews. That’s why we created <span className="highlight">IntervYOU</span>—a platform designed to provide students with the tools they need to succeed.
